@@ -1,0 +1,113 @@
+﻿@model HomePageViewModel
+@{
+    ViewData["Title"] = "Ana sayfa";
+}
+
+
+<div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-label="Slide 1" aria-current="true"></button>
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2" class=""></button>
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3" class=""></button>
+    </div>
+    <div class="carousel-inner">
+        @foreach (var item in Model.Sliders)
+        {
+            <div class="carousel-item @(item == Model.Sliders.FirstOrDefault() ? "active" : "") ">
+
+                <img src="/Img/@item.Image" alt="@item.Name" />
+                <div class="container">
+                    <div class="carousel-caption text-start">
+                        <h1>@item.Name</h1>
+                        <p>@item.Description</p>
+                        <p><a class="btn btn-lg btn-primary" href="/@item.Link">İncele</a></p>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+
+<!-- Marketing messaging and featurettes
+================================================== -->
+<!-- Wrap the rest of the page in another container to center all the content. -->
+
+<div class="container marketing mt-5">
+    <h2 class="text-center">Bizden Haberler</h2>
+    <!-- Three columns of text below the carousel -->
+    <div class="row text-center">
+        @foreach (var item in Model.News)
+        {
+            <div class="col-lg-4">
+
+                <img src="/Img/@item.Image" alt="" class="bd-placeholder-img rounded-circle" width="140" height="140" />
+                <h2>@item.Name</h2>
+                <p>@item.Content</p>
+                <p><a class="btn btn-secondary" href="/news/detail/@item.Id">Detayını gör »</a></p>
+            </div>
+        }
+
+    </div><!-- /.row -->
+    <!-- START THE FEATURETTES -->
+    <h2 class="text-center">İçerikler</h2>
+
+    <hr class="featurette-divider">
+
+    @foreach (var item in Model.Posts)
+    {
+        <div class="row featurette">
+            <div class="col-md-7">
+                <h2 class="featurette-heading">@item.Name</h2>
+                <p class="lead">@item.Content</p>
+            </div>
+            <div class="col-md-5">
+                <a href="/Posts/Detail/@item.Id">
+                    <img src="/Img/@item.Image" alt="@item.Name" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="400" height="400" />
+                </a>
+            </div>
+        </div>
+
+        <hr class="featurette-divider">
+    }
+
+    @*
+           <div class="row featurette">
+            <div class="col-md-7">
+                <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It’ll blow your mind.</span></h2>
+                <p class="lead">Some great placeholder content for the first featurette here. Imagine some exciting prose here.</p>
+            </div>
+            <div class="col-md-5">
+                <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+
+            </div>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+            <div class="col-md-7 order-md-2">
+                <h2 class="featurette-heading">Oh yeah, it’s that good. <span class="text-muted">See for yourself.</span></h2>
+                <p class="lead">Another featurette? Of course. More placeholder content here to give you an idea of how this layout would work with some actual real-world content in place.</p>
+            </div>
+            <div class="col-md-5 order-md-1">
+                <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+
+            </div>
+        </div>
+
+        <hr class="featurette-divider">*@
+
+
+    <!-- /END THE FEATURETTES -->
+
+</div><!-- /.container -->
